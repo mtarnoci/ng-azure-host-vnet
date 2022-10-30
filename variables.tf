@@ -65,13 +65,12 @@ variable "vm_count" {
 variable "vm_username" {
   description = "Username for Virtual Machines"
   type        = string
-  default     = "ngadmin"
+  default     = "vmadmin"
 }
 
 variable "vm_password" {
   description = "Password for Virtual Machines"
   type        = string
-  default     = "Ng@dmin#!2&3"
 }
 
 variable "vm_size" {
