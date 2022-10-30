@@ -1,19 +1,3 @@
-variable "subscription_id" {
-  description = "Subscription ID where resources should be deployed | Mandatory"
-}
-
-variable "tenant_id" {
-  description = "Tenant ID where resources should be deployed | Mandatory"
-}
-
-variable "client_id" {
-  description = "Client ID - Application registration (Terraform) for Orchestration | Mandatory"
-}
-
-variable "client_secret" {
-  description = "Secret for Application registration (Terraform) Orchestration | Mandatory"
-}
-
 variable "location" {
   description = "Location/Region where resources should be deployed | Mandatory"
 }
