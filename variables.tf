@@ -45,6 +45,12 @@ variable "vm_count" {
   default     = 0
 }
 
+variable "public_ip" {
+  description = "VM Count"
+  type        = bool
+  default     = false
+}
+
 # VM variables
 variable "vm_username" {
   description = "Username for Virtual Machines"

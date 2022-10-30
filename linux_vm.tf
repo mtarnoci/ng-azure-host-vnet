@@ -4,7 +4,7 @@
 #-----------------------------------#
 
 resource "azurerm_public_ip" "vm_pip" {
-  count               = var.vm_count
+  count               = var.public_ip ? var.vm_count : 0
   name                = format("vm-%s-pip-%s", count.index, var.location)
   location            = azurerm_resource_group.ng-host-vnet-rg.location
   resource_group_name = azurerm_resource_group.ng-host-vnet-rg.name
@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "nic0-vm" {
     name                          = format("nic0-gi1-inetv4-vm-%s-%s", count.index, var.location)
     subnet_id                     = azurerm_subnet.inetv4-subnet-gi1.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.vm_pip[count.index].id
+    public_ip_address_id          = var.public_ip ? azurerm_public_ip.vm_pip[count.index].id : null
     primary                       = true
   }
   tags = var.tags
