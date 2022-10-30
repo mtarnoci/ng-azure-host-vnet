@@ -1,13 +1,11 @@
 
 resource "azurerm_resource_group" "ng-host-vnet-rg" {
-  provider = azurerm.azure
   name     = var.rg_name
   location = var.location
   tags     = var.tags
 }
 
 resource "azurerm_virtual_network" "host-vnet" {
-  provider = azurerm.azure
   name                = var.vnet_name
   location            = azurerm_resource_group.ng-host-vnet-rg.location
   resource_group_name = azurerm_resource_group.ng-host-vnet-rg.name
@@ -16,7 +14,6 @@ resource "azurerm_virtual_network" "host-vnet" {
 }
 
 resource "azurerm_network_security_group" "ipl_inbound" {
-  provider = azurerm.azure
   name                = var.sg_name
   location            = azurerm_resource_group.ng-host-vnet-rg.location
   resource_group_name = azurerm_resource_group.ng-host-vnet-rg.name
@@ -72,13 +69,11 @@ resource "azurerm_network_security_group" "ipl_inbound" {
 }
 
 resource "azurerm_subnet_network_security_group_association" "ipl_inbound" {
-  provider = azurerm.azure
   subnet_id                 = azurerm_subnet.inetv4-subnet-gi1.id
   network_security_group_id = azurerm_network_security_group.ipl_inbound.id
 }
 
 resource "azurerm_subnet" "inetv4-subnet-gi1" {
-  provider = azurerm.azure
   name                 = var.inet_subnet_name
   resource_group_name  = azurerm_resource_group.ng-host-vnet-rg.name
   virtual_network_name = azurerm_virtual_network.host-vnet.name
