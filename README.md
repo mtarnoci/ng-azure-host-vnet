@@ -1,0 +1,1 @@
+# ng-azure-host-vnet
