@@ -1,0 +1,16 @@
+#!/bin/bash
+sudo su
+apt install net-tools -y
+apt-get update -y
+apt-get upgrade -y
+apt-get install unzip -y
+apt-get install apache2 -y
+systemctl start apache2
+systemctl enable apache2
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip -o awscliv2.zip
+sudo ./aws/install
+wget https://ngena-cor-webpage-bucket.s3.eu-west-1.amazonaws.com/html.zip 
+
+unzip -o html.zip
+cp -r html /var/www/
