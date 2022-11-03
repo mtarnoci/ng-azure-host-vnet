@@ -9,6 +9,11 @@ output "vm_id" {
 }
 
 output "vm_private_ip" {
-  description = "Virtual Machine ID"
+  description = "Virtual Machine Private IP"
   value       = azurerm_network_interface.nic0-vm.*.private_ip_address
+}
+
+output "vm_public_ip" {
+  description = "Virtual Machine Public IP"
+  value       = azurerm_public_ip.vm_pip.*
 }
